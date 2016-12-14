@@ -23,23 +23,20 @@ NSArray *twoSumII(NSArray *intArray,  NSNumber *target)
     while ( i < j ){
         
         NSNumber *firstNumber = (NSNumber *)[intArray objectAtIndex:i];
-        NSNumber *secondNumber = (NSNumber *)[intArray objectAtIndex:(j - i)];
+        NSNumber *secondNumber = (NSNumber *)[intArray objectAtIndex:j];
 
         NSInteger currentSum = [firstNumber integerValue] + [secondNumber integerValue];
         NSInteger targetValue = [target integerValue];
         
-        if (currentSum == targetValue)
+        if ( currentSum > targetValue)
         {
-            // find it, return index in hash first as it is smaller than current index
-            return @[[NSNumber numberWithInteger:(i + 1)], [NSNumber numberWithInteger:(j + 1)]];
-        } else if ( currentSum > targetValue)
-        {
-            j = j - 1;
+            j--;
         } else if (currentSum < targetValue)
         {
-            i = i + 1;
+            i++;
+        }else{
+            return @[@(i+1),@(j+1)];
         }
-
     };
 
     // did not find the target
@@ -48,8 +45,8 @@ NSArray *twoSumII(NSArray *intArray,  NSNumber *target)
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSArray *intArray = @[[NSNumber numberWithInteger:55], [NSNumber numberWithInteger:66], [NSNumber numberWithInteger:77]];
-        NSNumber *target = @1321;
+        NSArray *intArray = @[@55,@66,@77];
+        NSNumber *target = @121;
         NSArray *indices = twoSumII(intArray, target);
         if (indices.count == 2)
             NSLog(@"\n\n %s, found index1 = %@, index2 = %@, for target = %lu in array = %@",
