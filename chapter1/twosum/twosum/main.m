@@ -26,9 +26,9 @@ NSArray *twoSum(NSArray *intArray,  NSNumber *target)
         
         // use objective c objects on all numbers so that they word with NSDictionay. Plain C does not work with NSDictionary
         NSNumber *currValue = (NSNumber *)[intArray objectAtIndex:i];
-        NSNumber *diffValue = [NSNumber numberWithInteger:([target integerValue] - [currValue integerValue])];
+        NSNumber *diffValue = @([target integerValue] - [currValue integerValue]);
         NSNumber *diffIdx = [map objectForKey:diffValue];
-        NSNumber *currIdx = [NSNumber numberWithInteger:i + 1];
+        NSNumber *currIdx = @(i+1);
         
         if (diffIdx) {
             // find it, return index in hash first as it is smaller than current index
@@ -45,7 +45,7 @@ NSArray *twoSum(NSArray *intArray,  NSNumber *target)
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSArray *intArray = @[[NSNumber numberWithInteger:55], [NSNumber numberWithInteger:66], [NSNumber numberWithInteger:77]];
+        NSArray *intArray = @[@55,@66,@77];
         NSNumber *target = @121;
         NSArray *indices = twoSum(intArray, target);
         if (indices.count == 2)
