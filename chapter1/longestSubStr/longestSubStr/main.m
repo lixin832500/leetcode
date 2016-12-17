@@ -77,9 +77,16 @@ NSUInteger lenOfLongestStr(NSString *s)
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSString *s = @"aabcdaaegfhpi";
+        NSString *s = @"abcdaaegfyufftrssesujkjigyrseeeerfhggfiusdgfiufhiuerhguihreiughrueihgi hfhh iihi oghi hi hihgihghgfhjhdkjdfkdsfgiufhicbjdsbjkdsbcjkdbjvbdjvbjdbvjdbvjdbvjkdsbvjdsbvjdsbjvbjkbfjjgcfugugeugcjjhckdhkjcdskjfjhfjdsjfhksdfhksjdhfkjdhfjkhfdsucbuiiufiugiusdviuvuiegfugeufgewuifgigfidsgfiudgsfuigiufgewuifgewiufgeuwfgiugfsdgdsvijdsbvibiuvgwugfuiwegfewbiethpi";
+        NSDate *start = [NSDate date];
         NSLog(@"%lu", lenOfLongestStr(s));
+        NSDate *end = [NSDate date];
+        NSLog(@"time for lenOfLongestStr is %f",[end timeIntervalSinceDate:start]);
+       start = [NSDate date];
         NSLog(@"%lu", longstSubStr(s));
+        end = [NSDate date];
+        NSLog(@"time for longstSubStr is %f",[end timeIntervalSinceDate:start]);
+
     }
     return 0;
 }
