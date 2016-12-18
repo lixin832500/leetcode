@@ -15,11 +15,6 @@
 #import <Foundation/Foundation.h>
 #import "linkNode.h"
 
-//typedef struct link_node {
-//    NSInteger value;
-//    struct link_node *next;
-//} linkNode;
-
 linkNode *mergeLists(linkNode *L1, linkNode *L2)
 {
     // sanity check
@@ -129,7 +124,7 @@ int main(int argc, const char * argv[]) {
         linkNode *link4 = formListFromArray(B);
         printList(link4);
 
-        linkNode *mergedListWithDummy = mergeLists(link3, link4);
+        linkNode *mergedListWithDummy = mergeListsWithDummy(link3, link4);
         printList(mergedListWithDummy);
     }
     return 0;
