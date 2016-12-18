@@ -30,8 +30,8 @@ int strStr(NSString *needle, NSString *haystack)
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSString *needle = @"a";
-        NSString *haystack = @"ab";
+        NSString *needle = @"bat";
+        NSString *haystack = @"abatl";
         NSLog(@"needle=%@, haystack=%@, strstr=%d", needle, haystack, strStr(needle, haystack));
     }
     return 0;
