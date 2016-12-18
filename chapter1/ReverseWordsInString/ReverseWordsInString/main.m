@@ -56,9 +56,7 @@ NSArray* convertStringToArray(NSString* s){
                 [stack addObject:tmp];
                 tmp = @"".mutableCopy;
             }
-          
         }
-        
     }
     NSLog(@"stack is %@",[stack description]);
     return [stack copy];
@@ -81,7 +79,16 @@ NSString *reversedString2(NSString *s)
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSString *s = @" ! the sky is blue ? ";
-        NSLog(@"s=%@, reversed s=%@", s, reversedString2(s));
+        NSDate* start = [NSDate date];
+        NSLog(@"reversedString: s=%@, reversed s=%@", s, reversedString(s));
+        NSDate* end = [NSDate date];
+        NSLog(@"reversedString: %f ms",[end timeIntervalSinceDate:start]*1000);
+
+        start = [NSDate date];
+        NSLog(@"reversedString2: s=%@, reversed s=%@", s, reversedString2(s));
+        end = [NSDate date];
+        NSLog(@"reversedString2: %f ms",[end timeIntervalSinceDate:start]*1000);
+
     }
     return 0;
 }
