@@ -63,7 +63,17 @@ int strToInt(NSString *s) {
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSString *s = @"++1.1a";
+        NSString *s = @"+ +1.1a";
+        NSLog(@"str=%@, strToInt=%d", s, strToInt(s));
+        s = @"13234234";
+        NSLog(@"str=%@, strToInt=%d", s, strToInt(s));
+        s = @"13234$234";
+        NSLog(@"str=%@, strToInt=%d", s, strToInt(s));
+        s = @"-13234234";
+        NSLog(@"str=%@, strToInt=%d", s, strToInt(s));
+        s = @"-13234.3";
+        NSLog(@"str=%@, strToInt=%d", s, strToInt(s));
+        s = @"13234234894729384798247892";
         NSLog(@"str=%@, strToInt=%d", s, strToInt(s));
     }
     return 0;
