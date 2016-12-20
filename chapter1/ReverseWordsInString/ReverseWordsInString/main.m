@@ -43,10 +43,52 @@ NSString *reversedString(NSString *s)
     return rs;
 }
 
+NSArray* convertStringToArray(NSString* s){
+    NSUInteger strlen = [s length];
+    NSMutableArray *stack= [NSMutableArray new];
+    NSMutableString *tmp = [[NSMutableString alloc]init];
+    
+    for(int i = 0; i<strlen; i++){
+        if ([s characterAtIndex:i] != 32) {
+            [tmp appendFormat:@"%c",[s characterAtIndex:i]];
+        }else{
+            if (i != 0) {
+                [stack addObject:tmp];
+                tmp = @"".mutableCopy;
+            }
+        }
+    }
+    NSLog(@"stack is %@",[stack description]);
+    return [stack copy];
+}
+
+NSString *reversedString2(NSString *s)
+{
+    NSMutableArray *stack = convertStringToArray(s).mutableCopy;
+    NSUInteger stackSize = [stack count];
+    NSMutableString *reveredString = [[NSMutableString alloc]init];
+    for (int i = 0; i < stackSize; i++) {
+        [reveredString appendString:[stack lastObject]];
+        [reveredString appendString:@" "];
+        [stack removeLastObject];
+    }
+    
+    return reveredString;
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSString *s = @" ! the sky is blue ? ";
-        NSLog(@"s=%@, reversed s=%@", s, reversedString(s));
+        NSDate* start = [NSDate date];
+        NSLog(@"reversedString: s=%@, reversed s=%@", s, reversedString(s));
+        NSDate* end = [NSDate date];
+        NSLog(@"reversedString: %f ms",[end timeIntervalSinceDate:start]*1000);
+
+        start = [NSDate date];
+        NSLog(@"reversedString2: s=%@, reversed s=%@", s, reversedString2(s));
+        end = [NSDate date];
+        NSLog(@"reversedString2: %f ms",[end timeIntervalSinceDate:start]*1000);
+
     }
     return 0;
 }
